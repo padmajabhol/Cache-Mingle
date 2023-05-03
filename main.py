@@ -7,12 +7,18 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-cache = Cache()
+cache = Cache(maxsize=256, ttl=0, default=None)
 
+class Value(BaseModel):
+    key: str
+    value: str
+    
 @app.put("/value/{key}")
-def create_value(key: str, value: str):
-    cache.set(key, value)
-    return {"key": key, "value": value}
+def create_value(request: Value):
+    key_value = request.key
+    value_value = request.value
+    cache.set(key_value, value_value)
+    return {'data': 'Value is stored in new key'}
 
 @app.get("/name/{key}")
 def get_value(key: str):
