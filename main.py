@@ -24,7 +24,7 @@ def get_value(key: str):
 @app.delete("/value/{key}")
 def delete(key: str):
     cache.delete(key)
-    return {'data': "name is deleted"}
+    return {'data': "value is deleted"}
 
 @app.get("/values/keys")
 def view_keys():
