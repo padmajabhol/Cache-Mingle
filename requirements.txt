@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+cacheout  
+coverage 
+httpx 
+pytest 
+pytest-cov 
+pytest-xdist
