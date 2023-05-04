@@ -23,8 +23,14 @@ def test_view_keys():
     assert response.status_code == 200
     assert response.json() == {"keys": list(data["key"])}
 
+def test_get_entire_cache():
+    response = client.get("/value")
+    assert response.status_code == 200
+    assert response.json() == {'value': {data["key"]: data["value"]}}
+
 def test_delete():
     response = client.delete("/value/1")
     assert response.status_code == 200
     assert response.json() == {'data': "value is deleted"}
+
 

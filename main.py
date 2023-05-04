@@ -37,3 +37,8 @@ def delete(key: str):
     cache.delete(key)
     return {'data': "value is deleted"}
 
+@app.get("/value")
+def get_entire_cache():
+    value = cache.copy()
+    return {"value": value}
+
