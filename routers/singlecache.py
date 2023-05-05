@@ -1,9 +1,6 @@
-from pydantic import BaseModel
 from fastapi import APIRouter
-from cacheout import Cache
 from schema import Value
 from repository import singlecache
-import main
 
 router = APIRouter()
     
