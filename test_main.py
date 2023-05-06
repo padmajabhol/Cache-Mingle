@@ -10,7 +10,7 @@ data = {
 
 def test_create_value():
     response = client.put("/cache/1", json=data)
-    assert response.status_code == 200
+    assert response.status_code == 201
     assert response.json() == data
 
 def test_get_value():
@@ -18,15 +18,20 @@ def test_get_value():
     assert response.status_code == 200
     assert response.json() == data
 
+def test_get_value_error():
+    response = client.get("/cache/3")
+    assert response.status_code == 404
+    assert response.json() == {"detail": "Value with key 3 not found"}
+
 def test_view_keys():
-    response = client.get("/caches/keys")
+    response = client.get("/cache/all/keys")
     assert response.status_code == 200
-    assert response.json() == {"keys": list(data["key"])}
+    assert response.json() == {"keys": [data["key"]]}
 
 def test_get_entire_cache():
     response = client.get("/cache")
     assert response.status_code == 200
-    assert response.json() == {'value': {data["key"]: data["value"]}}
+    assert response.json() == {'data': {data["key"]: data["value"]}}
 
 def test_delete():
     response = client.delete("/cache/1")
@@ -57,7 +62,7 @@ def test_set_bulk_value():
     response = client.put("/bulkcache", json=request_body)
 
     # Assert that the response status code is 200
-    assert response.status_code == 200
+    assert response.status_code == 201
     assert response.json() == {'message': 'Set successfully'}
 
 def test_get_cache_values():
@@ -83,7 +88,7 @@ data1 = {
 }
 def test_configure_cache():
     response = client.put("/configure", json=data1)
-    assert response.status_code == 200
+    assert response.status_code == 202
     assert response.json() == {"data": f"new maxsize set to {data1['maxsize']} and ttl set to {data1['ttl']}"}
 
 

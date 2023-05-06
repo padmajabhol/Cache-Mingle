@@ -8,7 +8,7 @@ def create_cache(request: Value):
     main.cache.set(key_value, value_value)
     return {"key": key_value, "value": value_value}
 
-def get_cache(key: str):
+def get_cache(key: int):
     value = main.cache.get(key)
     if not value:
         raise HTTPException(status_code=404, detail=f"Value with key {key} not found")
@@ -18,10 +18,10 @@ def view_keys():
     keys = list(main.cache.keys())
     return {"keys": keys}
 
-def delete_cache(key: str):
+def delete_cache(key: int):
     main.cache.delete(key)
-    return {'data': "value is deleted"}
+    return {"data": "value is deleted"}
 
 def get_entire_cache():
-    value = main.cache.copy()
-    return {"value": value}
+    values = main.cache.copy()
+    return {"data": values}
