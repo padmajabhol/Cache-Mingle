@@ -11,5 +11,3 @@ app.include_router(singlecache.router)
 app.include_router(bulkcache.router)
 app.include_router(configurecache.router)
 
-if __name__ == '__main__':
-    uvicorn.run('main:app', port=8000, reload=True)
