@@ -27,7 +27,7 @@ $ source env/bin/activate
 ```bash
 $ pip install -r requirements.txt
 ```
-5. Run project
+5. Restart the terminal and run project
 ```bash
 uvicorn main:app --reload
 ```
@@ -64,6 +64,75 @@ test_main.py                      58      0   100%
 --------------------------------------------------
 TOTAL                            178      1    99%
 ```
+
+## Endpoints
+
+| Endpoint       |  Functionality            |
+| :--------------| :------------------------ |
+| **GET \cache\{key}**  | This API call simulates fetching a single value corresponding to its key. Key is a mandatory path vbariable. |
+| **PUT \cache\{key}**  | This API call creates a value corresponding to a key. Key and Value are mandatory. |
+| **DELETE \cache\{key}** | This API call deletes a key and its respected value. Key is a mandatory path variable. |
+| **GET \cache\all\keys**  | This API call simulates fetching all keys. |
+| **GET \cache**  | This API call simulates fetching all keys and their respected values. |
+| **GET \bulkcache**  | This API call simulates fetching bulk values and their keys. |
+| **PUT \bulkcache**  | This API call creates a bulk values corresponding to their keys. Key and Value are mandatory. |
+| **DELETE \bulkcache**  | This API call bulk deletes values and their keys. |
+| **PUT \configure** | This API call updates the maxsize and time-to-live(expiry) of the cache. |
+
+## Request Bodies
+
+### Configure cache
+<code>
+PUT /configure/
+</code>
+
+```json
+{
+  "maxsize": "Maximum cache size",
+  "ttl": "TTL (time-to-live)"
+}
+```
+The type for the above properties would be:-
+
+* **maxsize** : *int* (Optional)
+* **ttl** : *int* (Optional)
+
+### Create single data
+<code>
+PUT /cache/{key}
+</code>
+
+```json
+{
+  "key": "key of the value",
+  "value": "the value that goes in"
+}
+```
+The type for the above properties would be:-
+
+* **key** : *str* 
+*  **value** : *str*
+
+### Create bulk data
+<code>
+PUT /bulkcache/
+</code>
+
+```json
+{
+  "items": [
+    {
+      "key": "key of the value",
+      "value": "the value that goes in"
+    }
+  ]
+}
+```
+The type for the above properties would be:-
+* **key** : *str* 
+*  **value** : *str*
+  
+
 
 
 
