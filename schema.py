@@ -1,5 +1,5 @@
 from pydantic import BaseModel, validator
-from typing import List 
+from typing import List, Optional
 
 class Value(BaseModel):
     key: str
@@ -19,5 +19,5 @@ class CreateBulkValue(BaseModel):
 
 
 class Configure(BaseModel):
-    maxsize: int | None = None
-    ttl: int | None = None
+    maxsize: Optional[int] = None
+    ttl: Optional[int] = None
