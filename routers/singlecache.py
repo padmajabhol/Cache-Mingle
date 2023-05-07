@@ -2,7 +2,7 @@ from fastapi import APIRouter, status
 from schema import Value
 from repository import singlecache
 
-router = APIRouter(prefix="/cache", tags=['single cache'])
+router = APIRouter(prefix="/cache", tags=['operations'])
     
 @router.put("/{key}",
             status_code=status.HTTP_201_CREATED,

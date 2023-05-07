@@ -3,7 +3,7 @@ from fastapi import APIRouter, Query, status
 from schema import CreateBulkValue
 from repository import bulkcache
 
-router = APIRouter(prefix="/bulkcache", tags=['bulk cache'])
+router = APIRouter(prefix="/bulkcache", tags=['bulk coperations'])
 
 @router.put("/", 
             status_code=status.HTTP_201_CREATED,
