@@ -26,6 +26,7 @@ def view_all_keys():
     return singlecache.view_keys()
 
 @router.delete("/{key}",
+               status_code=status.HTTP_204_NO_CONTENT,
                summary="Delete data",
                description="This API call deletes a key and its respected value. **Key** is a mandatory path variable.")
 def delete(key: str):

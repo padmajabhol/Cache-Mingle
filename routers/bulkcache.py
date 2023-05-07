@@ -20,6 +20,7 @@ def get(keys: List[str] = Query(None)):
     return bulkcache.get_cache_values(keys)
 
 @router.delete("/",
+               status_code=status.HTTP_204_NO_CONTENT,
                summary="Delete bulk data",
                description="This API call bulk deletes values and their keys.")
 def delete(keys: List[str] = Query(None)):

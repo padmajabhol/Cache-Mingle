@@ -1,12 +1,14 @@
 from schema import CreateBulkValue
 from typing import List
-from fastapi import Query
+from fastapi import Query, HTTPException
 import main
 
 def set_bulk_value(request: CreateBulkValue):
     for item in request.items:
-        key = item.key
+        key = item.key.strip()
         value = item.value
+        if not key:
+            raise HTTPException(status_code=404, detail=f"Invalid key")
         main.cache.set(key, value )
     return {"message": "Set successfully"}
 
