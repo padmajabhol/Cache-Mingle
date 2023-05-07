@@ -19,5 +19,5 @@ class CreateBulkValue(BaseModel):
 
 
 class Configure(BaseModel):
-    maxsize: int
-    ttl: int
+    maxsize: int | None = None
+    ttl: int | None = None
