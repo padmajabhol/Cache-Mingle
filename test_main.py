@@ -64,11 +64,7 @@ def test_set_bulk_value():
             {"key": key4, "value": value4},
         ]
     }
-
-    # Make a request to the set_bulk_value endpoint
     response = client.put("/bulkcache", json=request_body)
-
-    # Assert that the response status code is 201
     assert response.status_code == 201
     assert response.json() == {'message': 'Set successfully'}
     assert client.put(f"/bulkcache", json=request_body2).status_code == status.HTTP_404_NOT_FOUND
