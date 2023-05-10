@@ -69,15 +69,15 @@ TOTAL                            178      1    99%
 
 | Endpoint       |  Functionality            |
 | :--------------| :------------------------ |
-| **GET \cache\{key}**  | This API call simulates fetching a single value corresponding to its key. Key is a mandatory path vbariable. |
-| **PUT \cache\{key}**  | This API call creates a value corresponding to a key. Key and Value are mandatory. |
-| **DELETE \cache\{key}** | This API call deletes a key and its respected value. Key is a mandatory path variable. |
-| **GET \cache\all\keys**  | This API call simulates fetching all keys. |
-| **GET \cache**  | This API call simulates fetching all keys and their respected values. |
-| **GET \bulkcache**  | This API call simulates fetching bulk values and their keys. |
-| **PUT \bulkcache**  | This API call creates a bulk values corresponding to their keys. Key and Value are mandatory. |
-| **DELETE \bulkcache**  | This API call bulk deletes values and their keys. |
-| **PUT \configure** | This API call updates the maxsize and time-to-live(expiry) of the cache. |
+| **GET /cache/{key}**  | This API call simulates fetching a single value corresponding to its key. Key is a mandatory path vbariable. |
+| **PUT /cache/{key}**  | This API call creates a value corresponding to a key. Key and Value are mandatory. |
+| **DELETE /cache/{key}** | This API call deletes a key and its respected value. Key is a mandatory path variable. |
+| **GET /cache/all/keys**  | This API call simulates fetching all keys. |
+| **GET /cache**  | This API call simulates fetching all keys and their respected values. |
+| **GET /bulkcache**  | This API call simulates fetching bulk values and their keys. |
+| **PUT /bulkcache**  | This API call creates a bulk values corresponding to their keys. Key and Value are mandatory. |
+| **DELETE /bulkcache**  | This API call bulk deletes values and their keys. |
+| **PUT /configure** | This API call updates the maxsize and time-to-live(expiry) of the cache. |
 
 ## Request Bodies
 
